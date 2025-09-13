@@ -24,7 +24,9 @@ const Index = () => {
           activeSection={activeSection} 
           onSectionChange={setActiveSection} 
         />
-        <VFDContent activeSection={activeSection} />
+        <div className="flex-1 lg:ml-0">
+          <VFDContent activeSection={activeSection} />
+        </div>
       </div>
 
       {/* Footer Status Bar */}
