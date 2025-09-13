@@ -34,14 +34,21 @@ const skills = [
 ];
 
 export default function VFDContent({ activeSection }: VFDContentProps) {
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const projectsPerPage = 3;
+  const totalPages = Math.ceil(projects.length / projectsPerPage);
 
-  const nextProject = () => {
-    setCurrentProjectIndex((prev) => (prev + 1) % projects.length);
+  const nextPage = () => {
+    setCurrentPage((prev) => (prev + 1) % totalPages);
   };
 
-  const prevProject = () => {
-    setCurrentProjectIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  const prevPage = () => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  };
+
+  const getCurrentProjects = () => {
+    const start = currentPage * projectsPerPage;
+    return projects.slice(start, start + projectsPerPage);
   };
   const renderAbout = () => (
     <div className="space-y-6">
@@ -87,7 +94,7 @@ export default function VFDContent({ activeSection }: VFDContentProps) {
   );
 
   const renderProjects = () => {
-    const currentProject = projects[currentProjectIndex];
+    const currentProjects = getCurrentProjects();
     
     return (
       <div className="space-y-6">
@@ -100,54 +107,58 @@ export default function VFDContent({ activeSection }: VFDContentProps) {
         </div>
         
         <div className="space-y-4">
-          <div className="bg-secondary/20 border border-primary/20 p-4 hover:border-primary/40 transition-all">
-            <div className="flex items-start justify-between mb-3">
-              <h3 className="vfd-text-bright font-mono text-lg">{currentProject.title}</h3>
-              <span className={`text-xs px-2 py-1 border font-mono ${
-                currentProject.status === 'OPERATIONAL' ? 'text-accent border-accent/50' :
-                currentProject.status === 'DEPLOYED' ? 'text-primary border-primary/50' :
-                'text-yellow-400 border-yellow-400/50'
-              }`}>
-                {currentProject.status}
-              </span>
-            </div>
-            <p className="vfd-text text-sm mb-3">{currentProject.description}</p>
-            <div className="flex flex-wrap gap-2 mb-3">
-              {currentProject.tech.map((tech) => (
-                <span key={tech} className="vfd-text-dim text-xs px-2 py-1 bg-muted/30 border border-muted font-mono">
-                  {tech}
+          {currentProjects.map((project, index) => (
+            <div key={currentPage * projectsPerPage + index} className="bg-secondary/20 border border-primary/20 p-4 hover:border-primary/40 transition-all">
+              <div className="flex items-start justify-between mb-3">
+                <h3 className="vfd-text-bright font-mono text-lg">{project.title}</h3>
+                <span className={`text-xs px-2 py-1 border font-mono ${
+                  project.status === 'OPERATIONAL' ? 'text-accent border-accent/50' :
+                  project.status === 'DEPLOYED' ? 'text-primary border-primary/50' :
+                  'text-yellow-400 border-yellow-400/50'
+                }`}>
+                  {project.status}
                 </span>
-              ))}
+              </div>
+              <p className="vfd-text text-sm mb-3">{project.description}</p>
+              <div className="flex flex-wrap gap-2 mb-3">
+                {project.tech.map((tech) => (
+                  <span key={tech} className="vfd-text-dim text-xs px-2 py-1 bg-muted/30 border border-muted font-mono">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className="flex gap-2">
+                <button className="vfd-button text-xs px-3 py-1 flex items-center gap-1">
+                  <Github className="w-3 h-3" />
+                  CODE
+                </button>
+                <button className="vfd-button text-xs px-3 py-1 flex items-center gap-1">
+                  <ExternalLink className="w-3 h-3" />
+                  DEMO
+                </button>
+              </div>
             </div>
-            <div className="flex gap-2">
-              <button className="vfd-button text-xs px-3 py-1 flex items-center gap-1">
-                <Github className="w-3 h-3" />
-                CODE
-              </button>
-              <button className="vfd-button text-xs px-3 py-1 flex items-center gap-1">
-                <ExternalLink className="w-3 h-3" />
-                DEMO
-              </button>
-            </div>
-          </div>
+          ))}
           
           {/* Navigation */}
           <div className="flex items-center justify-between p-4 bg-secondary/20 border border-primary/20">
             <button 
-              onClick={prevProject}
+              onClick={prevPage}
               className="vfd-button text-xs px-3 py-2 flex items-center gap-2"
+              disabled={totalPages <= 1}
             >
               <ChevronLeft className="w-4 h-4" />
               PREV
             </button>
             
             <div className="vfd-text-dim text-xs font-mono">
-              PROJECT {currentProjectIndex + 1} OF {projects.length}
+              PAGE {currentPage + 1} OF {totalPages}
             </div>
             
             <button 
-              onClick={nextProject}
+              onClick={nextPage}
               className="vfd-button text-xs px-3 py-2 flex items-center gap-2"
+              disabled={totalPages <= 1}
             >
               NEXT
               <ChevronRight className="w-4 h-4" />
