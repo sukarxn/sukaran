@@ -1,4 +1,5 @@
-import { Github, ExternalLink, Mail, Linkedin, Download, ChevronRight } from "lucide-react";
+import { Github, ExternalLink, Mail, Linkedin, Download, ChevronRight, ChevronLeft } from "lucide-react";
+import { useState } from "react";
 
 interface VFDContentProps {
   activeSection: string;
@@ -33,6 +34,15 @@ const skills = [
 ];
 
 export default function VFDContent({ activeSection }: VFDContentProps) {
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+
+  const nextProject = () => {
+    setCurrentProjectIndex((prev) => (prev + 1) % projects.length);
+  };
+
+  const prevProject = () => {
+    setCurrentProjectIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  };
   const renderAbout = () => (
     <div className="space-y-6">
       <div>
@@ -76,32 +86,34 @@ export default function VFDContent({ activeSection }: VFDContentProps) {
     </div>
   );
 
-  const renderProjects = () => (
-    <div className="space-y-6">
-      <div>
-        <h2 className="vfd-text-bright text-2xl font-mono mb-4 flex items-center gap-2">
-          <ChevronRight className="w-5 h-5" />
-          PROJECTS.EXE
-        </h2>
-        <div className="vfd-accent-line mb-6"></div>
-      </div>
-      
-      <div className="space-y-4">
-        {projects.map((project, index) => (
-          <div key={index} className="bg-secondary/20 border border-primary/20 p-4 hover:border-primary/40 transition-all">
+  const renderProjects = () => {
+    const currentProject = projects[currentProjectIndex];
+    
+    return (
+      <div className="space-y-6">
+        <div>
+          <h2 className="vfd-text-bright text-2xl font-mono mb-4 flex items-center gap-2">
+            <ChevronRight className="w-5 h-5" />
+            PROJECTS.EXE
+          </h2>
+          <div className="vfd-accent-line mb-6"></div>
+        </div>
+        
+        <div className="space-y-4">
+          <div className="bg-secondary/20 border border-primary/20 p-4 hover:border-primary/40 transition-all">
             <div className="flex items-start justify-between mb-3">
-              <h3 className="vfd-text-bright font-mono text-lg">{project.title}</h3>
+              <h3 className="vfd-text-bright font-mono text-lg">{currentProject.title}</h3>
               <span className={`text-xs px-2 py-1 border font-mono ${
-                project.status === 'OPERATIONAL' ? 'text-accent border-accent/50' :
-                project.status === 'DEPLOYED' ? 'text-primary border-primary/50' :
+                currentProject.status === 'OPERATIONAL' ? 'text-accent border-accent/50' :
+                currentProject.status === 'DEPLOYED' ? 'text-primary border-primary/50' :
                 'text-yellow-400 border-yellow-400/50'
               }`}>
-                {project.status}
+                {currentProject.status}
               </span>
             </div>
-            <p className="vfd-text text-sm mb-3">{project.description}</p>
+            <p className="vfd-text text-sm mb-3">{currentProject.description}</p>
             <div className="flex flex-wrap gap-2 mb-3">
-              {project.tech.map((tech) => (
+              {currentProject.tech.map((tech) => (
                 <span key={tech} className="vfd-text-dim text-xs px-2 py-1 bg-muted/30 border border-muted font-mono">
                   {tech}
                 </span>
@@ -118,10 +130,33 @@ export default function VFDContent({ activeSection }: VFDContentProps) {
               </button>
             </div>
           </div>
-        ))}
+          
+          {/* Navigation */}
+          <div className="flex items-center justify-between p-4 bg-secondary/20 border border-primary/20">
+            <button 
+              onClick={prevProject}
+              className="vfd-button text-xs px-3 py-2 flex items-center gap-2"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              PREV
+            </button>
+            
+            <div className="vfd-text-dim text-xs font-mono">
+              PROJECT {currentProjectIndex + 1} OF {projects.length}
+            </div>
+            
+            <button 
+              onClick={nextProject}
+              className="vfd-button text-xs px-3 py-2 flex items-center gap-2"
+            >
+              NEXT
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const renderSkills = () => (
     <div className="space-y-6">
