@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        mono: ['JetBrains Mono', 'Consolas', 'Monaco', 'Courier New', 'monospace'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,43 +50,43 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+        vfd: {
+          glow: "hsl(var(--vfd-glow))",
+          "glow-bright": "hsl(var(--vfd-glow-bright))",
+          "glow-dim": "hsl(var(--vfd-glow-dim))",
+          screen: "hsl(var(--vfd-screen))",
+          border: "hsl(var(--vfd-border))",
+          accent: "hsl(var(--vfd-accent))",
+        },
+      },
+      boxShadow: {
+        'glow': 'var(--glow-shadow)',
+        'glow-bright': 'var(--glow-shadow-bright)',
+        'border-glow': 'var(--border-glow)',
+      },
+      animation: {
+        'flicker': 'flicker 3s infinite',
+        'glow-pulse': 'glow-pulse 2s ease-in-out infinite alternate',
+      },
+      keyframes: {
+        flicker: {
+          '0%, 98%': { opacity: '1' },
+          '99%': { opacity: '0.8' },
+          '100%': { opacity: '1' },
+        },
+        'glow-pulse': {
+          'from': {
+            textShadow: '0 0 3px currentColor, 0 0 6px currentColor',
+          },
+          'to': {
+            textShadow: '0 0 6px currentColor, 0 0 12px currentColor, 0 0 18px currentColor',
+          },
         },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
-        },
-        "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
