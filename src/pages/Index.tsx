@@ -11,7 +11,7 @@ const Index = () => {
       <div className="h-12 bg-card border-b border-primary/30 flex items-center px-6">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-accent rounded-full animate-glow-pulse"></div>
-          <span className="vfd-text font-mono text-sm">PORTFOLIO_TERMINAL</span>
+          <span className="vfd-text font-mono text-sm">PORTFOLIO_TERMINAL hehehe</span>
         </div>
         <div className="ml-auto vfd-text-dim font-mono text-xs">
           {new Date().toLocaleString().toUpperCase()}
