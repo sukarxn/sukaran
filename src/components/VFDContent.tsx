@@ -89,8 +89,7 @@ export default function VFDContent({ activeSection }: VFDContentProps) {
         </div>
         
         <p className="leading-relaxed">
-          Passionate software engineer specializing in cutting-edge web technologies 
-          and artificial intelligence systems. I build scalable applications that solve 
+          I build scalable applications that solve 
           real-world problems, with expertise in modern JavaScript frameworks, 
           machine learning, and cloud architecture.
         </p>
