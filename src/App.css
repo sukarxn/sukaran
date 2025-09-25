@@ -1,4 +1,7 @@
-#root {
+/* Custom filter for GitHub contribution chart to match dark theme */
+.github-chart-dark {
+  filter: invert(1) hue-rotate(180deg) brightness(1.2) contrast(1.1);
+}#root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;

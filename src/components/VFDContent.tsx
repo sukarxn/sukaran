@@ -7,22 +7,25 @@ interface VFDContentProps {
 
 const projects = [
   {
-    title: "NEURAL_NETWORK.AI",
-    description: "Advanced machine learning system with real-time processing capabilities",
-    tech: ["Python", "TensorFlow", "React", "FastAPI"],
-    status: "OPERATIONAL",
+    title: "MATCHMAIT.AI",
+    description: "A dating app for college students supporting real-time chat",
+    tech: ["Next.js", "Supabase", "Flutter", "Websockets"],
+    status: "IN_DEVELOPMENT",
+    github: "https://github.com/sukarxn/matchmait",
   },
   {
     title: "BLOCKCHAIN_WALLET",
     description: "Secure cryptocurrency wallet with multi-chain support",
     tech: ["Solidity", "Web3.js", "Next.js", "MongoDB"],
     status: "DEPLOYED",
+    github: "https://github.com/sukarxn/blockchain_wallet",
   },
   {
     title: "QUANTUM_SIMULATOR",
     description: "Quantum computing simulation environment for research",
     tech: ["C++", "CUDA", "Python", "Docker"],
     status: "BETA",
+    github: "https://github.com/sukarxn/quantum_simulator",
   },
 ];
 
@@ -67,14 +70,22 @@ export default function VFDContent({ activeSection }: VFDContentProps) {
         </div>
         
         <div className="bg-secondary/20 border border-primary/20 p-4 space-y-3">
-          <div className="vfd-text-bright text-lg">JOHN_DOE.DEV</div>
+          <div className="vfd-text-bright text-lg">SUKARAN_GULATI</div>
           <div className="vfd-text-dim text-sm">
             CLASSIFICATION: FULL_STACK_DEVELOPER
             <br />
-            SPECIALIZATION: AI_SYSTEMS | WEB_APPLICATIONS
-            <br />
-            EXPERIENCE: 5+ YEARS
+            SPECIALIZATION: AGENTIC_AI | WEB_APPLICATIONS
           </div>
+        </div>
+
+        {/* GitHub Contribution Chart */}
+        <div className="bg-secondary/20 border border-primary/20 p-4 space-y-3">
+          <img
+            src="https://ghchart.rshah.org/sukarxn"
+            alt="sukarxn's GitHub contribution chart"
+            className=" rounded-lg github-chart-dark"
+            style={{ maxWidth: '100%', height: 'auto' }}
+          />
         </div>
         
         <p className="leading-relaxed">
@@ -105,41 +116,56 @@ export default function VFDContent({ activeSection }: VFDContentProps) {
           </h2>
           <div className="vfd-accent-line mb-6"></div>
         </div>
-        
         <div className="space-y-4">
-          {currentProjects.map((project, index) => (
-            <div key={currentPage * projectsPerPage + index} className="bg-secondary/20 border border-primary/20 p-4 hover:border-primary/40 transition-all">
-              <div className="flex items-start justify-between mb-3">
-                <h3 className="vfd-text-bright font-mono text-lg">{project.title}</h3>
-                <span className={`text-xs px-2 py-1 border font-mono ${
-                  project.status === 'OPERATIONAL' ? 'text-accent border-accent/50' :
-                  project.status === 'DEPLOYED' ? 'text-primary border-primary/50' :
-                  'text-yellow-400 border-yellow-400/50'
-                }`}>
-                  {project.status}
-                </span>
-              </div>
-              <p className="vfd-text text-sm mb-3">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-3">
-                {project.tech.map((tech) => (
-                  <span key={tech} className="vfd-text-dim text-xs px-2 py-1 bg-muted/30 border border-muted font-mono">
-                    {tech}
+          {currentProjects.map((project, index) => {
+            const cardContent = (
+              <div className="bg-secondary/20 border border-primary/20 p-4 hover:border-primary/40 transition-all cursor-pointer">
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="vfd-text-bright font-mono text-lg">{project.title}</h3>
+                  <span className={`text-xs px-2 py-1 border font-mono ${
+                    project.status === 'OPERATIONAL' ? 'text-accent border-accent/50' :
+                    project.status === 'DEPLOYED' ? 'text-primary border-primary/50' :
+                    'text-yellow-400 border-yellow-400/50'
+                  }`}>
+                    {project.status}
                   </span>
-                ))}
+                </div>
+                <p className="vfd-text text-sm mb-3">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {project.tech.map((tech) => (
+                    <span key={tech} className="vfd-text-dim text-xs px-2 py-1 bg-muted/30 border border-muted font-mono">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-2">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="vfd-button text-xs px-3 py-1 flex items-center gap-1"
+                  >
+                    <Github className="w-3 h-3" />
+                    CODE
+                  </a>
+                  {/* You can add a DEMO link here if available in the future */}
+                </div>
               </div>
-              <div className="flex gap-2">
-                <button className="vfd-button text-xs px-3 py-1 flex items-center gap-1">
-                  <Github className="w-3 h-3" />
-                  CODE
-                </button>
-                <button className="vfd-button text-xs px-3 py-1 flex items-center gap-1">
-                  <ExternalLink className="w-3 h-3" />
-                  DEMO
-                </button>
-              </div>
-            </div>
-          ))}
-          
+            );
+            return project.github ? (
+              <a
+                key={currentPage * projectsPerPage + index}
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none' }}
+              >
+                {cardContent}
+              </a>
+            ) : (
+              <div key={currentPage * projectsPerPage + index}>{cardContent}</div>
+            );
+          })}
           {/* Navigation */}
           <div className="flex items-center justify-between p-4 bg-secondary/20 border border-primary/20">
             <button 
@@ -150,11 +176,9 @@ export default function VFDContent({ activeSection }: VFDContentProps) {
               <ChevronLeft className="w-4 h-4" />
               PREV
             </button>
-            
             <div className="vfd-text-dim text-xs font-mono">
               PAGE {currentPage + 1} OF {totalPages}
             </div>
-            
             <button 
               onClick={nextPage}
               className="vfd-button text-xs px-3 py-2 flex items-center gap-2"
