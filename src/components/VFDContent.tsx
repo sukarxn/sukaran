@@ -91,7 +91,8 @@ export default function VFDContent({ activeSection }: VFDContentProps) {
         <p className="leading-relaxed">
           I build scalable applications that solve 
           real-world problems, with expertise in modern JavaScript frameworks, 
-          machine learning, and cloud architecture.
+          machine learning, and cloud architecture. I also build applications leveraring 
+          generative AI.
         </p>
         
         <p className="leading-relaxed">
