@@ -7,6 +7,13 @@ interface VFDContentProps {
 
 const projects = [
   {
+    title: "QUANTUM_SIMULATOR",
+    description: "Quantum computing simulation environment for research",
+    tech: ["C++", "CUDA", "Python", "Docker"],
+    status: "BETA",
+    github: "https://github.com/sukarxn/quantum_simulator",
+  },
+  {
     title: "MATCHMAIT.AI",
     description: "A dating app for college students supporting real-time chat",
     tech: ["Next.js", "Supabase", "Flutter", "Websockets"],
@@ -14,19 +21,20 @@ const projects = [
     github: "https://github.com/sukarxn/matchmait",
   },
   {
-    title: "BLOCKCHAIN_WALLET",
-    description: "Secure cryptocurrency wallet with multi-chain support",
-    tech: ["Solidity", "Web3.js", "Next.js", "MongoDB"],
+    title: "E-COMMERCE_STORE",
+    description: "Deployed an end to end e-commerce application integrated with payment gateway for a client",
+    tech: ["React.js", "Tailwind CSS", "Razorpay"],
     status: "DEPLOYED",
-    github: "https://github.com/sukarxn/blockchain_wallet",
+    github: "ikase.com",
   },
   {
-    title: "QUANTUM_SIMULATOR",
-    description: "Quantum computing simulation environment for research",
+    title: "GITHUB_ISSUES_RECOMMENDER",
+    description: "An ML based app that finds open github issues in full stack projects based on your skills and experience",
     tech: ["C++", "CUDA", "Python", "Docker"],
     status: "BETA",
-    github: "https://github.com/sukarxn/quantum_simulator",
+    github: "https://github.com/sukarxn/github-issues-recommender",
   },
+
 ];
 
 const skills = [
