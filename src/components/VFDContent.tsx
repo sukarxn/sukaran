@@ -25,7 +25,7 @@ const projects = [
     description: "Quantum computing simulation environment for research",
     tech: ["C++", "CUDA", "Python", "Docker"],
     status: "BETA",
-    github: "https://github.com/sukarxn/quantum_simulator",
+    github: "https://github.com/sukarxn/quantum-simulator",
   },
   {
     title: "MATCHMAIT.AI",
