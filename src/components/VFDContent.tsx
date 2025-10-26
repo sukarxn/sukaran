@@ -11,7 +11,7 @@ const projects = [
     description: "Deployed an end to end e-commerce application integrated with payment gateway for a client",
     tech: ["React.js", "Tailwind CSS", "Razorpay"],
     status: "DEPLOYED",
-    github: "ikase.com",
+    github: "https://ikase.com",
   },
   {
     title: "GITHUB_ISSUES_RECOMMENDER",
