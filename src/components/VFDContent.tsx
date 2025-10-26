@@ -18,7 +18,7 @@ const projects = [
     description: "An ML based app that finds open github issues in full stack projects based on your skills and experience",
     tech: ["C++", "CUDA", "Python", "Docker"],
     status: "BETA",
-    github: "https://github.com/sukarxn/github-issues-recommender",
+    github: "https://github.com/sukarxn/Github_issues_recommendation_sys",
   },
   {
     title: "QUANTUM_SIMULATOR",
