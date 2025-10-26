@@ -7,20 +7,6 @@ interface VFDContentProps {
 
 const projects = [
   {
-    title: "QUANTUM_SIMULATOR",
-    description: "Quantum computing simulation environment for research",
-    tech: ["C++", "CUDA", "Python", "Docker"],
-    status: "BETA",
-    github: "https://github.com/sukarxn/quantum_simulator",
-  },
-  {
-    title: "MATCHMAIT.AI",
-    description: "A dating app for college students supporting real-time chat",
-    tech: ["Next.js", "Supabase", "Flutter", "Websockets"],
-    status: "IN_DEVELOPMENT",
-    github: "https://github.com/sukarxn/matchmait",
-  },
-  {
     title: "E-COMMERCE_STORE",
     description: "Deployed an end to end e-commerce application integrated with payment gateway for a client",
     tech: ["React.js", "Tailwind CSS", "Razorpay"],
@@ -34,6 +20,20 @@ const projects = [
     status: "BETA",
     github: "https://github.com/sukarxn/github-issues-recommender",
   },
+  {
+    title: "QUANTUM_SIMULATOR",
+    description: "Quantum computing simulation environment for research",
+    tech: ["C++", "CUDA", "Python", "Docker"],
+    status: "BETA",
+    github: "https://github.com/sukarxn/quantum_simulator",
+  },
+  {
+    title: "MATCHMAIT.AI",
+    description: "A dating app for college students supporting real-time chat",
+    tech: ["Next.js", "Supabase", "Flutter", "Websockets"],
+    status: "IN_DEVELOPMENT",
+    github: "https://github.com/sukarxn/matchmait",
+  }
 
 ];
 
