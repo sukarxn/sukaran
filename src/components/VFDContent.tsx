@@ -17,7 +17,7 @@ const projects = [
     title: "GITHUB_ISSUES_RECOMMENDER",
     description: "An ML based app that finds open github issues in full stack projects based on your skills and experience using phi-4 llm deployed locally.",
     tech: ["Python","Huggingface", "React.js", "Vite", ],
-    status: "IMPROVISATION",
+    status: "DEPLOYED",
     github: "https://github.com/sukarxn/Github_issues_recommendation_sys",
   },
   {
