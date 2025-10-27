@@ -9,7 +9,7 @@ const projects = [
   {
     title: "E-COMMERCE_STORE",
     description: "Deployed an end to end e-commerce application integrated with payment gateway for a client",
-    tech: ["React.js", "Tailwind CSS", "Razorpay"],
+    tech: ["React.js", "Tailwind CSS", "Razorpay", "Express.js"],
     status: "DEPLOYED",
     github: "https://www.iksae.com/",
   },
