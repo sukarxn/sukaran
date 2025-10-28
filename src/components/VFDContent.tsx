@@ -21,11 +21,11 @@ const projects = [
     github: "https://github.com/sukarxn/Github_issues_recommendation_sys",
   },
   {
-    title: "QUANTUM_SIMULATOR",
-    description: "Quantum computing simulation environment for research",
-    tech: ["C++", "CUDA", "Python", "Docker"],
-    status: "BETA",
-    github: "https://github.com/sukarxn/quantum-simulator",
+    title: "MY OWN SHELL",
+    description: "Here I built my own shell completely written in typescript from scratch.",
+    tech: ["Typescript", "Node.js"],
+    status: "IN_DEVELOPMENT",
+    github: "https://github.com/sukarxn/build-my-own-shell",
   },
   {
     title: "MATCHMAIT.AI",
